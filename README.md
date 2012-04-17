@@ -19,7 +19,22 @@
 
 2. Under the *Work with* dropdown select "LeetEdit - Update-Site"
 
-3. 
+3. Select *LeetEdit* and press _next_
+
+4. Follow the wizard and restart eclipse after completion
+
+
+## How to use
+
+`
+LeetEdit leetEdit = new LeetEdit(parent, SWT.NONE);
+
+// Set text
+leetEdit.setText("LeetEdit is kind of leet.");
+
+// Get text
+String text = leetEdit.getText();
+`
 
 
 ## License
