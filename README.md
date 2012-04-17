@@ -4,6 +4,10 @@
 
 2012 by http://tim-pietrusky.de
 
+## In Action
+
+http://tim-pietrusky.de/img/leetedit_preview.png
+
 ## Install via Update-Site
 
 ### Add Update-Site
