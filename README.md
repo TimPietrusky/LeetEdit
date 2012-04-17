@@ -26,7 +26,7 @@
 
 ## How to use
 
-`
+```java
 LeetEdit leetEdit = new LeetEdit(parent, SWT.NONE);
 
 // Set text
@@ -34,7 +34,7 @@ leetEdit.setText("LeetEdit is kind of leet.");
 
 // Get text
 String text = leetEdit.getText();
-`
+```
 
 
 ## License
