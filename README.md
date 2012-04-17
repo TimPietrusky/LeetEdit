@@ -2,6 +2,8 @@
 
 *LeetEdit* is an HTML editor for Eclipse RCP based on TinyMCE. 
 
+2012 by http://tim-pietrusky.de
+
 ## Install via Update-Site
 
 ### Add Update-Site
