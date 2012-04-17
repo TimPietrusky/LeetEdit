@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+<title>StyledEditor</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" href="../leet.css" type="text/css" />
+
+<script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
+
+<script type="text/javascript">
+    tinyMCE.init({
+        theme : "advanced",
+        mode : "textareas",
+        plugins : "fullpage",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        
+        theme_advanced_buttons1: "bold,italic,underline,strikethrough,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,bullist,numlist,separator,formatselect,fontselect,fontsizeselect,separator,forecolor,backcolor",
+        theme_advanced_buttons2: "undo,redo",
+        theme_advanced_buttons3: "",
+        theme_advanced_buttons4: "",
+        
+        oninit : function() {
+            var content_table,
+                content_iframe,
+                mce_toolbar,
+                mce_iframeContainer;
+            
+            content_table = document.getElementById('content_tbl');
+            content_iframe = document.getElementById('content_ifr');
+            mce_toolbar = document.getElementsByClassName('mceToolbar')[0];
+            mce_iframeContainer = document.getElementsByClassName('mceIframeContainer')[0];
+            
+            // Set width & height 
+            content_table.style.width = '100%';
+            content_table.style.height = '100%';
+            
+            // Reset layout
+            content_table.style.border = 'none';
+            mce_toolbar.style.borderTop = 'none';
+            mce_iframeContainer.style.borderBottom = 'none';
+            
+            // Set height
+            content_iframe.style.height = '100%';
+        }
+    });
+    
+    /*
+     * Returns the content of tinyMCE. 
+     */
+    function getContent() {
+        return tinyMCE.activeEditor.getContent();
+    };
+</script>
+</head>
+<body>
+
+<textarea name="content"></textarea>
+
+</body>
+</html>
