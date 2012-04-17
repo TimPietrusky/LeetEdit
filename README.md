@@ -6,7 +6,7 @@
 
 ## In Action
 
-http://tim-pietrusky.de/img/leetedit_preview.png
+![in action](http://tim-pietrusky.de/img/leetedit_preview.png)
 
 ## Install via Update-Site
 
