@@ -20,7 +20,7 @@
 * justify center
 * justify right
 * justify full
-* bullet-ist
+* bullet-list
 * numbered-list
 * format
 * font
