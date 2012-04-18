@@ -4,7 +4,7 @@
 
 2012 by http://tim-pietrusky.de
 
-*Note: This is an early beta version. Please help me find bugs.*
+**Note: This is an early beta version. Please help me find bugs.**
 
 ## In Action
 
