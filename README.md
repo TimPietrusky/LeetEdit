@@ -4,11 +4,13 @@
 
 2012 by http://tim-pietrusky.de
 
+*Note: This is an early beta version. Please help me find bugs.*
+
 ## In Action
 
 ![in action](http://tim-pietrusky.de/img/leetedit_preview.png)
 
-## Currently available
+## Currently available options
 
 * bold
 * italic
