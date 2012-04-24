@@ -12,6 +12,8 @@ import org.eclipse.swt.browser.ProgressEvent;
 import org.eclipse.swt.browser.ProgressListener;
 import org.eclipse.swt.browser.StatusTextEvent;
 import org.eclipse.swt.browser.StatusTextListener;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -49,6 +51,17 @@ public class LeetEdit extends Composite {
         browser = new Browser(this, SWT.NONE);
         browser.setJavascriptEnabled(true);
         browser.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        browser.addControlListener(new ControlAdapter() {
+
+			@Override
+			public void controlResized(ControlEvent e) {
+				if(loadCompleted)
+					browser.execute("tinyMCE.activeEditor.getContentAreaContainer().height=" + 
+							(browser.getClientArea().height-70));
+				super.controlResized(e);
+			}
+        	
+		});
         
         // Set url pointed to editor
         try {
