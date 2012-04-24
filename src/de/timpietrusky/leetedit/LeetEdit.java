@@ -39,6 +39,7 @@ public class LeetEdit extends Composite {
     
     protected Browser browser;
     protected String editor_content;
+    protected boolean loadCompleted = false;
 
     public LeetEdit(Composite parent, int style) {
         super(parent, style);
@@ -68,10 +69,8 @@ public class LeetEdit extends Composite {
             }
 
             public void completed(ProgressEvent event) {
-                /**
-                 * @TODO [TimPietrusky] - 20120415: Escape some characters before set innerHTML (is this necessary?)
-                 */
-                browser.execute("document.getElementById('content').innerHTML = '" + editor_content + "';");
+            	loadCompleted = true;
+            	setText(editor_content);
             }
         });
         
@@ -89,7 +88,10 @@ public class LeetEdit extends Composite {
      * @param String text
      */
     public void setText(String text) {
-        editor_content = text;
+        editor_content = text == null ? "": text.replace("\n", "").replace("'", "\\'");
+        if(loadCompleted){
+        	browser.execute("tinyMCE.activeEditor.setContent('" + editor_content + "');");
+        }
     }
     
     /**
