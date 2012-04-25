@@ -1,6 +1,6 @@
 # LeetEdit 0.0.1
 
-*LeetEdit* is an HTML editor (WYSIWYG) for Eclipse RCP based on [TinyMCE](http://www.tinymce.com) (a JavaScript WYSIWYG Editor).
+*LeetEdit* is an HTML editor (WYSIWYG) for Eclipse RCP based on [TinyMCE](http://www.tinymce.com). TinyMCE is a platform independent JavaScript HTML WYSIWYG editor.
 
 2012 by http://tim-pietrusky.de
 
