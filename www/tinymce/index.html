@@ -9,6 +9,9 @@
 <script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
 
 <script type="text/javascript">
+    // tinyMCE completly loaded?
+    var loaded = false;
+
     tinyMCE.init({
         theme : "advanced",
         mode : "textareas",
@@ -48,6 +51,12 @@
             
             // Set height
             content_iframe.style.height = '100%';
+        },
+        
+        setup : function(ed) {
+            ed.onPostRender.add(function(ed, cm) {
+                loaded = true;
+            });
         }
     });
     
@@ -56,6 +65,20 @@
      */
     function getContent() {
         return tinyMCE.activeEditor.getContent();
+    };
+    
+    /*
+     * Sets the content of tinyMCE.
+     */
+    function setContent(text) {
+        // tinyMCE completly loaded
+        if (loaded) {
+            tinyMCE.activeEditor.setContent(text);
+            
+        // not loaded yet
+        } else {
+            document.getElementById('content').innerHTML = text;
+        }
     };
 </script>
 </head>

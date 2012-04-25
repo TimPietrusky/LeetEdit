@@ -50,8 +50,9 @@ public class LeetEdit extends Composite {
         browser = new Browser(this, SWT.NONE);
         browser.setJavascriptEnabled(true);
         browser.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        
+        // Listen to control resized
         browser.addControlListener(new ControlAdapter() {
-
 			public void controlResized(ControlEvent e) {
 				if (loadCompleted) {
 					browser.execute("tinyMCE.activeEditor.getContentAreaContainer().height=" + 
@@ -106,7 +107,7 @@ public class LeetEdit extends Composite {
             /**
              *  [TimPietrusky] 20120416 - tinyMCE might not yet been "completely" initialized
              */
-            browser.execute("document.getElementById('content').innerHTML = '" + editor_content + "';");
+            browser.execute("setContent('" + editor_content + "');");
         }
     }
     
