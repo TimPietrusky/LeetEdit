@@ -62,7 +62,9 @@ leetEdit.setText("LeetEdit is kind of leet.");
 String text = leetEdit.getText();
 ```
 
-
 ## License
 
 Dual-licensed under LGPL and EPL.
+
+## Contributors
+[igordejanovic](http://github.com/igordejanovic)
