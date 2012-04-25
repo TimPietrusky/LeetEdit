@@ -24,13 +24,17 @@
         oninit : function() {
             var content_table,
                 content_iframe,
+                iframe,
                 mce_toolbar,
-                mce_iframeContainer;
+                mce_iframeContainer,
+                mce_contentBody;
             
             content_table = document.getElementById('content_tbl');
             content_iframe = document.getElementById('content_ifr');
+            iframe = frames['content_ifr'].document;
             mce_toolbar = document.getElementsByClassName('mceToolbar')[0];
             mce_iframeContainer = document.getElementsByClassName('mceIframeContainer')[0];
+            mce_contentBody = iframe.getElementsByClassName('mceContentBody')[0];
             
             // Set width & height 
             content_table.style.width = '100%';
@@ -40,6 +44,7 @@
             content_table.style.border = 'none';
             mce_toolbar.style.borderTop = 'none';
             mce_iframeContainer.style.borderBottom = 'none';
+            mce_contentBody.style.overflow = 'hidden';
             
             // Set height
             content_iframe.style.height = '100%';
