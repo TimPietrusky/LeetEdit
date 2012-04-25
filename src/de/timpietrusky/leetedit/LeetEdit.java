@@ -45,7 +45,6 @@ public class LeetEdit extends Composite {
 
     public LeetEdit(Composite parent, int style) {
         super(parent, style);
-        
         setLayout(new GridLayout(1, true));
         
         browser = new Browser(this, SWT.NONE);
@@ -53,14 +52,14 @@ public class LeetEdit extends Composite {
         browser.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         browser.addControlListener(new ControlAdapter() {
 
-			@Override
 			public void controlResized(ControlEvent e) {
-				if(loadCompleted)
+				if (loadCompleted) {
 					browser.execute("tinyMCE.activeEditor.getContentAreaContainer().height=" + 
 							(browser.getClientArea().height-70));
-				super.controlResized(e);
+					
+					super.controlResized(e);
+				}
 			}
-        	
 		});
         
         // Set url pointed to editor
@@ -76,7 +75,7 @@ public class LeetEdit extends Composite {
             e.printStackTrace();
         }
         
-        // Set content of editor
+        // Set content of editor after load completed
         browser.addProgressListener(new ProgressListener() {
             public void changed(ProgressEvent event) {
             }
@@ -102,8 +101,12 @@ public class LeetEdit extends Composite {
      */
     public void setText(String text) {
         editor_content = text == null ? "": text.replace("\n", "").replace("'", "\\'");
-        if(loadCompleted){
-        	browser.execute("tinyMCE.activeEditor.setContent('" + editor_content + "');");
+        
+        if (loadCompleted) {
+            /**
+             *  [TimPietrusky] 20120416 - tinyMCE might not yet been "completely" initialized
+             */
+            browser.execute("document.getElementById('content').innerHTML = '" + editor_content + "';");
         }
     }
     
