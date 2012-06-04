@@ -64,7 +64,8 @@ String text = leetEdit.getText();
 
 ## License
 
-Dual-licensed under LGPL and EPL.
+Licensed under [VVL 1.33b7](http://tim-pietrusky.de/license) which means this **work** is free for all, so use it as you like.
+
 
 ## Contributors
 [igordejanovic](http://github.com/igordejanovic)
