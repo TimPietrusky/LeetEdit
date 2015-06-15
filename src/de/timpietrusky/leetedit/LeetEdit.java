@@ -43,7 +43,7 @@ public class LeetEdit extends Composite {
     protected String editor_content;
     protected boolean loadCompleted = false;
 
-    public LeetEdit(Composite parent, int style) {
+    public LeetEdit(final Composite parent, final int style) {
         super(parent, style);
         setLayout(new GridLayout(1, true));
         
@@ -53,9 +53,10 @@ public class LeetEdit extends Composite {
         
         // Listen to control resized
         browser.addControlListener(new ControlAdapter() {
-			public void controlResized(ControlEvent e) {
+			@Override
+			public void controlResized(final ControlEvent e) {
 				if (loadCompleted) {
-					browser.execute("tinyMCE.activeEditor.getContentAreaContainer().height=" + 
+					browser.execute("tinymce.activeEditor.getContentAreaContainer().height=" + 
 							(browser.getClientArea().height-70));
 					
 					super.controlResized(e);
@@ -65,23 +66,25 @@ public class LeetEdit extends Composite {
         
         // Set url pointed to editor
         try {
-            URL url_bundle = FileLocator.find(
+            final URL url_bundle = FileLocator.find(
                     Platform.getBundle("de.timpietrusky.leetedit"),
                         new Path("www/tinymce/index.html"), null); 
-            URL url_file = FileLocator.toFileURL(url_bundle);
+            final URL url_file = FileLocator.toFileURL(url_bundle);
             
             browser.setUrl(url_file.toString());
-        } catch (IOException e) {
+        } catch (final IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
         // Set content of editor after load completed
         browser.addProgressListener(new ProgressListener() {
-            public void changed(ProgressEvent event) {
+            @Override
+			public void changed(final ProgressEvent event) {
             }
 
-            public void completed(ProgressEvent event) {
+            @Override
+			public void completed(final ProgressEvent event) {
             	loadCompleted = true;
             	setText(editor_content);
             }
@@ -89,7 +92,8 @@ public class LeetEdit extends Composite {
         
         // Listen to status change event
         browser.addStatusTextListener(new StatusTextListener() {
-            public void changed(StatusTextEvent event) {
+            @Override
+			public void changed(final StatusTextEvent event) {
                 browser.setData("leet-content", event.text);
             }
         });
@@ -100,7 +104,7 @@ public class LeetEdit extends Composite {
      * 
      * @param String text
      */
-    public void setText(String text) {
+    public void setText(final String text) {
         editor_content = text == null ? "": text.replace("\n", "").replace("'", "\\'");
         
         if (loadCompleted) {
@@ -119,7 +123,7 @@ public class LeetEdit extends Composite {
     public String getText() {
         String content = "";
         
-        boolean executed = browser.execute("window.status=getContent();");
+        final boolean executed = browser.execute("window.status=getContent();");
         
         if (executed) {
             content = (String) browser.getData("leet-content");
